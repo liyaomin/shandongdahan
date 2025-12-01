@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山东大菡网络科技有限公司 | 永顺弘浚 - 专业游戏设计开发</title>
+    <style>
+        :root {
+            --primary-color: #00f2ff;
+            --secondary-color: #7000ff;
+            --bg-color: #0a0a12;
+            --text-color: #e0e0e0;
+            --card-bg: #161625;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 18, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            fill: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 16/9;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        .contact-info-box {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .contact-info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #050508;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            nav { display: none; } /* 简化处理，移动端隐藏导航 */
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <!-- 自动生成的Logo SVG -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00f2ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#7000ff;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="none" stroke="url(#grad1)" stroke-width="5"/>
+                <path d="M30,35 L70,35 L50,70 Z" fill="url(#grad1)" opacity="0.8"/>
+                <circle cx="50" cy="50" r="10" fill="#fff"/>
+            </svg>
+            永顺弘浚
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#services">服务领域</a></li>
+                <li><a href="#portfolio">成功案例</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>山东大菡网络科技有限公司</h1>
+            <p>致力于打造沉浸式数字娱乐体验，用技术与创意重新定义游戏世界。</p>
+            <a href="#contact" class="btn">开启合作之旅</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>关于永顺弘浚</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>山东大菡网络科技有限公司（简称“永顺弘浚”）是一家专注于高品质游戏研发与发行的创新型科技企业。我们汇聚了行业顶尖的策划、美术与技术人才，致力于为全球玩家提供极致的互动娱乐体验。</p>
+                <br>
+                <p>自成立以来，我们始终坚持“内容为王，技术驱动”的核心理念，在RPG、SLG及休闲竞技等多个领域深耕细作。我们相信，每一款游戏都是一个独立的世界，我们的使命就是让这个世界更加精彩。</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="团队办公环境">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-color: #0f0f1a;">
+        <h2>核心业务</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h3>游戏全案策划</h3>
+                <p>从世界观架构到数值体系设计，提供完整的游戏创意解决方案。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>美术视觉设计</h3>
+                <p>涵盖2D原画、3D建模、UI设计及特效制作，打造震撼视觉盛宴。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>程序技术开发</h3>
+                <p>精通Unity3D与Unreal引擎，提供稳定高效的前后端开发服务。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>运营与发行</h3>
+                <p>数据驱动的精细化运营，助力产品在全球市场获得商业成功。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>精选案例</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="项目1">
+                <div class="portfolio-overlay">
+                    <h3>星际征途</h3>
+                    <p>科幻策略SLG手游</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="项目2">
+                <div class="portfolio-overlay">
+                    <h3>幻境传说</h3>
+                    <p>次世代3D MMORPG</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="项目3">
+                <div class="portfolio-overlay">
+                    <h3>极速风暴</h3>
+                    <p>赛博朋克风格竞速游戏</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #0f0f1a;">
+        <h2>联系我们</h2>
+        <div class="contact-container">
+            <div class="contact-info-box">
+                <h3>📍 公司地址</h3>
+                <p>山东省菏泽市郓城县黄泥冈镇黄南村西200米路北</p>
+            </div>
+            <div class="contact-info-box">
+                <h3>📧 电子邮箱</h3>
+                <p>contact@shandongdahan.icu</p>
+            </div>
+            <div class="contact-info-box">
+                <h3>📞 联系电话</h3>
+                <p>17538246974</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 山东大菡网络科技有限公司 (永顺弘浚). All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
